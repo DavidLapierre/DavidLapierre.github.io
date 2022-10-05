@@ -40,3 +40,7 @@ th, td {
 td {
     width: 60px;
 }
+
+th {
+    width:80px;
+}

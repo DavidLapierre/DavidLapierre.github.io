@@ -61,7 +61,30 @@
                 axis:true,             // les axes fléchés sont présents
                 showCopyright:false,   // On retire le Copyright affreux
                 wheel:true,            // zoom avec la souris possible
-                grid:true});           // la grille est affichée en grisé
+                grid:true,             // la grille est affichée en grisé
+                defaultAxes: {
+                        x : {
+                        name: 'I (en A)',
+                        withLabel: true,
+                        label: {
+                            position: 'rt',
+                            offset: [-70, 15],
+                            color:'grey',
+                            fontsize:20,
+                        }
+                    },
+                    y : {
+                        name: 'U (en V)',
+                        withLabel: true,
+                        label: {
+                            position: 'rt',
+                            offset: [20, 1],
+                            color:'grey',
+                            fontsize:20,
+                        }
+                    },
+                    },
+            });          
     
                 
         // DATAS to be printed

@@ -93,7 +93,30 @@
                 axis:true,            // les axes fléchés sont présents
                 showCopyright:false,  // On retire le Copyright affreux
                 wheel:true,           // zoom avec la souris possible
-                grid:true});         // la grille est affichée en grisé
+                grid:true,            // la grille est affichée en grisé
+                defaultAxes: {
+                        x : {
+                        name: 'I (en A) ',
+                        withLabel: true,
+                        label: {
+                            position: 'rt',
+                            offset: [-60, 15],
+                            color:'grey',
+                            fontsize:20,
+                        }
+                    },
+                    y : {
+                        name: 'U (en V)',
+                        withLabel: true,
+                        label: {
+                            position: 'rt',
+                            offset: [20, 1],
+                            color:'grey',
+                            fontsize:20,
+                        }
+                    },
+                    },
+                });      
         
         // SLIDERS
         var a = brd.create('slider', [[0.05, 1.0], [0.085, 1.0],[0, 7, 110]],{name:'a', snapWidth: 0.1, color: 'red'});
