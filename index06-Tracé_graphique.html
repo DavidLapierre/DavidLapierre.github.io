@@ -54,6 +54,11 @@
         JXG.Options.axis.ticks.insertTicks = true;
         JXG.Options.axis.ticks.ticksDistance = 10;
 
+        // InfoBox :
+        JXG.Options.infobox.anchorY = 'top';
+        JXG.Options.infobox.anchorX = 'left';
+        JXG.Options.infobox.color = 'black';
+
         // TABLEAU DE BORD
         brd = JXG.JSXGraph.initBoard('boite1',{
                 boundingbox:[-0.005,12.2,0.122,-0.7], 
@@ -86,7 +91,9 @@
                     },
             });          
     
-                
+        brd.infobox.distanceX = 10;
+        brd.infobox.distanceY = 0;
+
         // DATAS to be printed
         var X = [0, 0.0288, 0.0438, 0.0581, 0.0729, 0.0873, 0.1166];
         var Y = [0, 2.94, 4.47, 5.93, 7.44, 8.9, 11.87];
@@ -104,7 +111,12 @@
             coordY[i] = Y[i];
             array_temp[i] = brd.create('point', [X[i],coordY[i]], {face:'plus', size:8, color:'blue', withLabel:false, visible:true});
         };
-        
+
+        // INFOBOX
+        brd.highlightInfobox = function(x,y,el) {
+                this.infobox.setText( 'I = ' + x + ' A' + '<br> ' + 'U = ' + y + ' V' );
+        };
+
         for (let j=0; j<20; j++){
             brd.create('line', [[0,j],[j,j]], {fixed:true, strokeWidth:0.7, strokeColor:'blue', highlightStrokeWidth: 0.7, highlightStrokeOpacity: 10.0, highlightStrokeColor: 'blue'});
             brd.create('line', [[0.01*j,0],[0.01*j,j]], {fixed:true, strokeWidth:0.7, strokeColor:'blue', highlightStrokeWidth: 0.7, highlightStrokeOpacity: 10.0, highlightStrokeColor: 'blue'});

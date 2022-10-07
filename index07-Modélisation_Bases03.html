@@ -92,6 +92,11 @@
         JXG.Options.axis.ticks.insertTicks = true;
         JXG.Options.axis.ticks.ticksDistance = 10;
 
+        // InfoBox :
+        JXG.Options.infobox.anchorY = 'top';
+        JXG.Options.infobox.anchorX = 'left';
+        JXG.Options.infobox.color = 'black';
+        
         brd = JXG.JSXGraph.initBoard('boite1',{
                 boundingbox:[-0.5,10.2,10.2,-0.2], 
                 keepaspectratio:true, // même échelle horizontale et verticale
@@ -121,8 +126,11 @@
                         }
                     },
                     },
-                });               
-        
+                }); 
+
+        brd.infobox.distanceX = 10;
+        brd.infobox.distanceY = 0;
+
         // SLIDERS
         var a = brd.create('slider', [[5, 1.0], [8.5, 1.0],[0, 1, 10]],{name:'a', snapWidth: 0.1, color: 'red'});
         
@@ -142,6 +150,11 @@
             array_temp[i] = brd.create('point', [X[i],a.Value()*X[i]], {face:'plus', size:8, color:'black', withLabel:false});   
         };
 
+        // INFOBOX
+        brd.highlightInfobox = function(x,y,el) {
+                this.infobox.setText( 'X = ' + x  + '<br> ' + 'Y = ' + y  );
+        };
+        
         // ANIMATION et MISE À JOUR
         let lastTime;
         function playAnimation(time){

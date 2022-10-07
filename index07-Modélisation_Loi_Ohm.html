@@ -85,6 +85,11 @@
         JXG.Options.axis.ticks.insertTicks = true;
         JXG.Options.axis.ticks.ticksDistance = 10;
 
+        // InfoBox :
+        JXG.Options.infobox.anchorY = 'top';
+        JXG.Options.infobox.anchorX = 'left';
+        JXG.Options.infobox.color = 'black';
+        
         brd = JXG.JSXGraph.initBoard('boite1',{
                 boundingbox:[-0.005,12.2,0.122,-0.7], 
                 keepaspectratio:false, // même échelle horizontale et verticale
@@ -114,8 +119,11 @@
                         }
                     },
                     },
-                });      
-        
+                });     
+
+        brd.infobox.distanceX = 10;
+        brd.infobox.distanceY = 0;
+
         // SLIDERS
         var a = brd.create('slider', [[0.05, 1.0], [0.085, 1.0],[0, 7, 110]],{name:'a', snapWidth: 0.1, color: 'red'});
         
@@ -140,6 +148,11 @@
             ligne2.cells[i+1].innerHTML = Y[i];
             
             array_stat[i] = brd.create('point', [X[i],Y[i]], {face:'plus', size:8, color:'blue', withLabel:false});  
+        };
+
+        // INFOBOX
+        brd.highlightInfobox = function(x,y,el) {
+                this.infobox.setText( 'I = ' + x + ' A' + '<br> ' + 'U = ' + y + ' V' );
         };
 
         for (let j=0; j<coordX.length; j++){       
@@ -195,7 +208,7 @@
         //       \u00d7 est le signe de la multiplication : x 
         var txt = brd.create('text', [ 0.005, 8, function () {
             affiche = (a.Value().toFixed(1)).toString().replace(".", ",");
-           return "Y = " + affiche +" \u00d7 X ";
+           return "U = " + affiche +" \u00d7 I ";
           }], {fontSize: 36, color:'red'});
         
 

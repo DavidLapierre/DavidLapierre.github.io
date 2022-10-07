@@ -56,6 +56,11 @@
         JXG.Options.axis.ticks.insertTicks = true;
         JXG.Options.axis.ticks.ticksDistance = 10;
 
+        // InfoBox :
+        JXG.Options.infobox.anchorY = 'top';
+        JXG.Options.infobox.anchorX = 'left';
+        JXG.Options.infobox.color = 'black';
+
         // TABLEAU DE BORD
         brd = JXG.JSXGraph.initBoard('boite1',{
                 boundingbox:[-0.005,12.2,0.122,-0.7], 
@@ -65,7 +70,9 @@
                 wheel:true,            // zoom avec la souris possible
                 grid:true});           // la grille est affichée en grisé
     
-                
+        brd.infobox.distanceX = 10;
+        brd.infobox.distanceY = 0;  
+
         // DATAS to be printed
         var X = [0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06];
         var ligne1 = document.getElementById("ma_table").rows[0];
@@ -81,6 +88,11 @@
             
             coordY[i] = 100*X[i];
             array_temp[i] = brd.create('point', [X[i],coordY[i]], {face:'plus', size:8, color:'blue', withLabel:false, visible:true});
+        };
+
+        // INFOBOX
+        brd.highlightInfobox = function(x,y,el) {
+                this.infobox.setText( 'X = ' + x  + '<br> ' + 'Y = ' + y  );
         };
         
         // ASPECT PAPIER MILLIMÉTRÉ
