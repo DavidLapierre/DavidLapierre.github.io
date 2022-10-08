@@ -132,8 +132,6 @@
         var Y = [0, 2.94, 4.47, 5.93, 7.44, 8.9, 11.87];
         var ligne1 = document.getElementById("ma_table").rows[0];
         var ligne2 = document.getElementById("ma_table").rows[1];
-        // var ligne1 = document.getElementById("ma_table").rows[0];
-        // var ligne2 = document.getElementById("ma_table").rows[1];
         var ligne3 = document.getElementById("ma_table2").rows[0];
         var ligne4 = document.getElementById("ma_table2").rows[1];
         var coordY = [];
@@ -147,7 +145,7 @@
             ligne1.cells[i+1].innerHTML = X[i];
             ligne2.cells[i+1].innerHTML = Y[i];
             
-            array_stat[i] = brd.create('point', [X[i],Y[i]], {face:'plus', size:8, color:'blue', withLabel:false});  
+            array_stat[i] = brd.create('point', [X[i],Y[i]], {fixed:true, face:'plus', size:8, color:'blue', withLabel:false});  
         };
 
         // INFOBOX
