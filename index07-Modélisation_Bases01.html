@@ -174,10 +174,11 @@
 
         // ÉQUATION AFFICHÉE
         //       \u00d7 est le signe de la multiplication : x 
+        var txt = brd.create('text', [ 1.0+0.5,  ()=> a.Value()*1.0 - 0.5, function () {
+            affiche = (a.Value().toFixed(1)).toString().replace(".", ",");
+           return "Y = " + affiche +" \u00d7 X ";
+          }], {fontSize: 36, color:'red'});
         
-        // var txt = brd.create('text', [ 0.5, 9, function () {
-        //    return "Y = " + (a.Value()).toFixed(0) +" \u00d7 X ";
-        //   }], {fontSize: 26});
 
         
                                                 

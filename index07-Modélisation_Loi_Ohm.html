@@ -215,10 +215,10 @@
         
         // ÉQUATION AFFICHÉE
         //       \u00d7 est le signe de la multiplication : x 
-        var txt = brd.create('text', [ 0.005, 8, function () {
+        var txt = brd.create('text', [  0.075,  ()=> a.Value()*0.075 - 0.5, function () {
             affiche = (a.Value().toFixed(1)).toString().replace(".", ",");
            return "U = " + affiche +" \u00d7 I ";
-          }], {fontSize: 36, color:'red'});
+          }], {fontSize: 30, color:'red'});
         
 
         

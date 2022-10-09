@@ -175,10 +175,10 @@
 //        brd.create('functiongraph', [function(x){return a.Value()*x+ b.Value();},-2*Math.PI,2*Math.PI],{strokeColor:'red',strokeWidth:3});
         brd.create('functiongraph', [(x) => a.Value()*x,0,20],{strokeColor:'red',strokeWidth:3});
         
-        // var txt = brd.create('text', [ 0.5, 9, function () {
-        //     affiche = (a.Value().toFixed(1)).toString().replace(".", ",");
-        //    return "Y = " + affiche +" \u00d7 X ";
-        //   }], {fontSize: 36, color:'red'});
+        var txt = brd.create('text', [ 1.0+0.5,  ()=> a.Value()*1.0 - 0.5, function () {
+            affiche = (a.Value().toFixed(1)).toString().replace(".", ",");
+           return "Y = " + affiche +" \u00d7 X ";
+          }], {fontSize: 36, color:'red'});
           
         
                                                 
