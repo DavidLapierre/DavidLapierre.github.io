@@ -11,42 +11,22 @@
 </head>
 
 <body>
-    <!-- <table id="ma_table" style="margin: auto;margin-bottom: 20px;">
-        <caption>Tableau de valeurs pour les + bleus</caption>
-       
-        <tr>
-           <th scope="row">X</th>
-            <td>0</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-        </tr>
-        <tr>
-            <th scope="row">Y</th>
-            <td>0</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-        </tr>
-    </table> -->
+
+    <nav>
+        <div class="left-links">
+            <a class="links" href="index07-Modélisation_Bases01.html">&larr;</a>
+        </div>
+        <div class="right-links">
+            <a class="links" href="index07-Modélisation_Bases03.html">&rarr;</a>
+        </div>
+    </nav>
+   
+    <div style="color:red; font-size: 36px;"><p id="output1" style="text-align:center;" ></p></div>
+
      <div id="boite1" class="jxgbox" style="width:500px; height:500px; margin : 20px auto;"></div>
      
      <table id="ma_table2" style="margin: auto;margin-bottom: 20px;">
-        <caption>Tableau de valeurs pour la droite ROUGE</caption>
+        <!-- <caption>Tableau de valeurs pour la droite ROUGE</caption> -->
         <tr>
            <th scope="row">X</th>
             <td>0</td>
@@ -77,6 +57,7 @@
         </tr>
     </table>
 
+    <div style="color:red; font-size: 36px;margin-top:-20px"><p id="output2" style="text-align:center;" ></p></div>
 
     <script type="text/javascript">
         // GRILLE
@@ -168,6 +149,11 @@
 
                 coordX[i] = X[i];
                 coordY[i] = a.Value()*X[i];
+                affiche = (a.Value().toFixed(1)).toString().replace(".", ",");
+                document.getElementById('output1').innerHTML = "Y = " + affiche +" \u00d7 X ";
+                document.getElementById('output2').innerHTML = "X \u00d7 "+ affiche + " = Y";
+               
+
 
                 array_temp[i].setPosition(JXG.COORDS_BY_USER,[parseFloat(coordX[i]),parseFloat(coordY[i])]);
                 brd.update();  
@@ -192,10 +178,10 @@
 //        brd.create('functiongraph', [function(x){return a.Value()*x+ b.Value();},-2*Math.PI,2*Math.PI],{strokeColor:'red',strokeWidth:3});
         brd.create('functiongraph', [(x) => a.Value()*x,0,20],{strokeColor:'red',strokeWidth:3});
         
-        var txt = brd.create('text', [ 0.5, 9, function () {
-            affiche = (a.Value().toFixed(1)).toString().replace(".", ",");
-           return "Y = " + affiche +" \u00d7 X ";
-          }], {fontSize: 36, color:'red'});
+        // var txt = brd.create('text', [ 0.5, 9, function () {
+        //     affiche = (a.Value().toFixed(1)).toString().replace(".", ",");
+        //    return "Y = " + affiche +" \u00d7 X ";
+        //   }], {fontSize: 36, color:'red'});
            
 
         

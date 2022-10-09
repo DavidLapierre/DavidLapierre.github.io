@@ -11,42 +11,21 @@
 </head>
 
 <body>
-    <!-- <table id="ma_table" style="margin: auto;margin-bottom: 20px;">
-        <caption>Tableau de valeurs pour les + bleus</caption>
-       
-        <tr>
-           <th scope="row">X</th>
-            <td>0</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-        </tr>
-        <tr>
-            <th scope="row">Y</th>
-            <td>0</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-        </tr>
-    </table> -->
+    <nav>
+        <div class="left-links">
+            <a class="links" href="index06-Tracé_graphique-échelle.html">&larr;</a>
+        </div>
+        <div class="right-links">
+            <a class="links" href="index07-Modélisation_Bases02.html">&rarr;</a>
+        </div>
+    </nav>
+    
+    <div style="color:red; font-size: 36px;"><p id="output1" style="text-align:center;" ></p></div>
+    
      <div id="boite1" class="jxgbox" style="width:500px; height:500px; margin : 20px auto;"></div>
      
      <table id="ma_table2" style="margin: auto;margin-bottom: 20px;">
-        <caption>Tableau de valeurs pour la droite ROUGE</caption>
+        <!-- <caption>Tableau de valeurs pour la droite ROUGE</caption> -->
         <tr>
            <th scope="row">X</th>
             <td>0</td>
@@ -77,6 +56,7 @@
         </tr>
     </table>
 
+    <div style="color:red; font-size: 36px;margin-top:-20px"><p id="output2" style="text-align:center;" ></p></div>
 
     <script type="text/javascript">
         // GRILLE
@@ -136,8 +116,6 @@
         
         // DATAS to be printed
         var X = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-        // var ligne1 = document.getElementById("ma_table").rows[0];
-        // var ligne2 = document.getElementById("ma_table").rows[1];
         var ligne3 = document.getElementById("ma_table2").rows[0];
         var ligne4 = document.getElementById("ma_table2").rows[1];
         var coordY = [];
@@ -168,6 +146,9 @@
                 coordX[i] = X[i];
                 coordY[i] = a.Value()*X[i];
 
+                document.getElementById('output1').innerHTML = "Y = " + (a.Value()).toFixed(0) +" \u00d7 X ";
+                document.getElementById('output2').innerHTML = "X \u00d7 "+ (a.Value()).toFixed(0) + "= Y";
+
                 array_temp[i].setPosition(JXG.COORDS_BY_USER,[parseFloat(coordX[i]),parseFloat(coordY[i])]);
                 brd.update();  
             };
@@ -193,9 +174,10 @@
 
         // ÉQUATION AFFICHÉE
         //       \u00d7 est le signe de la multiplication : x 
-        var txt = brd.create('text', [ 0.5, 9, function () {
-           return "Y = " + (a.Value()).toFixed(0) +" \u00d7 X ";
-          }], {fontSize: 26});
+        
+        // var txt = brd.create('text', [ 0.5, 9, function () {
+        //    return "Y = " + (a.Value()).toFixed(0) +" \u00d7 X ";
+        //   }], {fontSize: 26});
 
         
                                                 

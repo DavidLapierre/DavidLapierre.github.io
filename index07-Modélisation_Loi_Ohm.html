@@ -11,6 +11,14 @@
 </head>
 
 <body>
+    <nav>
+        <div class="left-links">
+            <a class="links" href="index07-Modélisation_Bases03.html">&larr;</a>
+        </div>
+        <div class="right-links">
+            <a class="links" href="index07-Modélisation_Loi_Ohm-échelle.html">&rarr;</a>
+        </div>
+    </nav>
     <table id="ma_table" style="margin: auto;margin-bottom: 20px;">
         <caption>Tableau de valeurs pour les + bleus</caption>
        
@@ -41,7 +49,7 @@
      <table id="ma_table2" style="margin: auto;margin-bottom: 20px;">
         <caption>Tableau de valeurs pour la droite ROUGE</caption>
         <tr>
-           <th scope="row">X</th>
+           <th scope="row">I (en A)</th>
             <td>0</td>
             <td>1</td>
             <td>2</td>
@@ -55,7 +63,7 @@
             <td>10</td>
         </tr>
         <tr>
-            <th scope="row">Y</th>
+            <th scope="row">U (en V)</th>
             <td>0</td>
             <td>1</td>
             <td>2</td>
@@ -70,6 +78,7 @@
         </tr>
     </table>
 
+    <div style="color:red;font-size: 36px; margin-top:-30px"> <p id="output2" style="text-align:center; " ></p> </div>
 
     <script type="text/javascript">
         // GRILLE
@@ -125,7 +134,7 @@
         brd.infobox.distanceY = 0;
 
         // SLIDERS
-        var a = brd.create('slider', [[0.05, 1.0], [0.085, 1.0],[0, 7, 110]],{name:'a', snapWidth: 0.1, color: 'red'});
+        var a = brd.create('slider', [[0.05, 1.0], [0.085, 1.0],[0, 60, 110]],{name:'a', snapWidth: 0.1, color: 'red'});
         
         // DATAS to be printed
         var X = [0, 0.0288, 0.0438, 0.0581, 0.0729, 0.0873, 0.1166];
@@ -171,12 +180,14 @@
            } 
         //    coordX[i] = [0.0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.10]
             for (let i=0; i<coordX.length; i++){
-                // coordX[i] = X[i];
-                // coordY[i] = (a.Value()*X[i]).toFixed(1);
+
                 coordY[i] = (a.Value()*coordX[i]).toFixed(2);
 
                 ligne3.cells[i+1].innerHTML = coordX[i]; 
                 ligne4.cells[i+1].innerHTML = coordY[i]; 
+
+                affiche = (a.Value().toFixed(1)).toString().replace(".", ",");
+                document.getElementById('output2').innerHTML = " I "+" \u00d7  "+ affiche  + " = U";
 
                 coordY[i] = a.Value()*coordX[i]
                 array_temp[i].setPosition(JXG.COORDS_BY_USER,[parseFloat(coordX[i]),parseFloat(coordY[i])]);
