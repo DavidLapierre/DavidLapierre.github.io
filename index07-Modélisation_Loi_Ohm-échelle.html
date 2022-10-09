@@ -149,8 +149,7 @@
         var ligne4 = document.getElementById("ma_table2").rows[1];
         var coordY = [];
         var coordX = [0.0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.10];
-        var array_stat = [];
-        var array_temp = [];
+        var array_stat = [], array_temp = [];
 
         
         // AFFICHAGE DE DÉPART des + de la droite ROUGE
@@ -219,7 +218,7 @@
         
         // ÉQUATION AFFICHÉE
         //       \u00d7 est le signe de la multiplication : x 
-          var txt = brd.create('text', [ 0.005, 8, function () {
+          var txt = brd.create('text', [ 0.095,  ()=> a.Value()*0.095 - 0.5, function () {
             affiche = (a.Value().toFixed(1)).toString().replace(".", ",");
            return "U = " + affiche +" \u00d7 I ";
           }], {fontSize: 36, color:'red'});
