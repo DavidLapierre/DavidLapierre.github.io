@@ -147,7 +147,7 @@
                 coordY[i] = a.Value()*X[i];
 
                 document.getElementById('output1').innerHTML = "Y = " + (a.Value()).toFixed(0) +" \u00d7 X ";
-                document.getElementById('output2').innerHTML = "X \u00d7 "+ (a.Value()).toFixed(0) + "= Y";
+                document.getElementById('output2').innerHTML = "X \u00d7 "+ (a.Value()).toFixed(0) + " = Y";
 
                 array_temp[i].setPosition(JXG.COORDS_BY_USER,[parseFloat(coordX[i]),parseFloat(coordY[i])]);
                 brd.update();  
@@ -175,7 +175,7 @@
         // ÉQUATION AFFICHÉE
         //       \u00d7 est le signe de la multiplication : x 
         var txt = brd.create('text', [ 1.0+0.5,  ()=> a.Value()*1.0 - 0.5, function () {
-            affiche = (a.Value().toFixed(1)).toString().replace(".", ",");
+            affiche = (a.Value().toFixed(0)).toString().replace(".", ",");
            return "Y = " + affiche +" \u00d7 X ";
           }], {fontSize: 36, color:'red'});
         
