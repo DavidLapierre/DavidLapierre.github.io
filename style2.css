@@ -2,6 +2,11 @@ body {
     margin:0px;
 }
 
+div#consignes {
+    width: 500px;
+    margin: 10px auto;
+}
+
 nav{
     display: flex;
     position: fixed;
@@ -15,6 +20,7 @@ nav{
 .left-links{
    flex:1 1 200px;
 }
+
 .links {
    display: inline-block;
    text-align: center;
@@ -25,6 +31,7 @@ nav{
    font-weight: bolder;
    background-color: rgb(240, 240, 240);
 }
+
 .links:hover {
    border-bottom: 2px solid red;
    color: red;

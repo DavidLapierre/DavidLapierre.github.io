@@ -6,6 +6,7 @@
     <title>Graphiques interactifs</title>
      <link rel="stylesheet" type="text/css" href="https://jsxgraph.org/distrib/jsxgraph.css" />
      <script type="text/javascript" src="https://jsxgraph.org/distrib/jsxgraphcore.js"></script>
+     <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script> 
      <link rel="stylesheet" href="./style2.css">
 
 </head>
@@ -100,7 +101,16 @@
         };
         
         brd.create('functiongraph', [(x) => 2.5*x,0,20],{strokeColor:'red',strokeWidth:3});
-                                                
+
+        var ensemble = [];
+        for (let i=0; i<8; i++) {
+            let value2 = Math.random() * 4.5;
+            ensemble.push(value2);
+        }
+        ensemble.sort();
+        console.log(ensemble);
+        
+
     </script>
     
 </body>
