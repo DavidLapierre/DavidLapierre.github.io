@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphiques interactifs</title>
+     <link rel="stylesheet" type="text/css" href="https://jsxgraph.org/distrib/jsxgraph.css" />
+     <script type="text/javascript" src="https://jsxgraph.org/distrib/jsxgraphcore.js"></script>
+     <link rel="stylesheet" href="./style2.css">
+
+</head>
+
+<body>
+    <nav>
+        <div class="left-links">
+            <a class="links" href="aide_eleve-new.html">&larr;</a>
+        </div>
+        <div class="right-links">
+            <a class="links selected" href="#">&rarr;</a>
+        </div>
+    </nav>
+    <table id="ma_table" style="margin: auto;margin-bottom: 20px;">
+        <caption>Tableau de valeurs pour les + bleus</caption>
+       
+        <tr>
+           <th scope="row">X</th>
+            <td contenteditable='true' >0</td>
+            <td contenteditable='true'>0.01</td>
+            <td contenteditable='true'>0.02</td>
+            <td contenteditable='true'>0.03</td>
+            <td contenteditable='true'>0.04</td>
+            <td contenteditable='true'>0.05</td>
+            <td contenteditable='true'>0.06</td>
+            <td contenteditable='true'>0.06</td>
+            <td contenteditable='true'>0.06</td>
+            <!-- <td contenteditable='true'>7</td> -->
+        </tr>
+        <tr>
+            <th scope="row">Y</th>
+            <td contenteditable='true'>0</td>
+            <td contenteditable='true'>.5</td>
+            <td contenteditable='true'>2.2</td>
+            <td contenteditable='true'>4.2</td>
+            <td contenteditable='true'>4</td>
+            <td contenteditable='true'>5.3</td>
+            <td contenteditable='true'>7.2</td>
+            <td contenteditable='true'>7.5</td>
+            <td contenteditable='true'>9</td>
+            <!-- <td contenteditable='true'>7</td> -->
+        </tr>
+    </table>
+     <div id="boite1" class="jxgbox" style="width:500px; height:500px; margin : 20px auto;"></div>
+     
+     
+
+
+    <script type="text/javascript">
+        // GRILLE
+        JXG.Options.grid.gridX = 0.01;
+        JXG.Options.grid.gridY = 0.1;
+        JXG.Options.grid.strokeWidth = 0.5;
+        JXG.Options.grid.strokeColor = 'blue';
+
+        // TICKS
+        JXG.Options.axis.ticks.strokeColor = 'blue';
+        JXG.Options.axis.ticks.strokeWidth = 1.85;
+        JXG.Options.axis.ticks.majorHeight = 10;
+        JXG.Options.axis.ticks.minorHeight = 10;
+        JXG.Options.axis.ticks.insertTicks = true;
+        JXG.Options.axis.ticks.ticksDistance = 10;
+
+        // InfoBox :
+        JXG.Options.infobox.anchorY = 'top';
+        JXG.Options.infobox.anchorX = 'left';
+        JXG.Options.infobox.color = 'black';
+
+        // TABLEAU DE BORD
+        const brd = JXG.JSXGraph.initBoard('boite1',{
+                boundingbox:[-0.05,10.2,1.02,-0.7], 
+                keepaspectratio:false, // même échelle horizontale et verticale
+                axis:true,             // les axes fléchés sont présents
+                showCopyright:false,   // On retire le Copyright affreux
+                wheel:true,            // zoom avec la souris possible
+                grid:true,           // la grille est affichée en grisé
+                defaultAxes: {
+                        x : {
+                        name: 'X',
+                        withLabel: true,
+                        label: {
+                            position: 'rt',
+                            offset: [-10, 15],
+                            color:'grey',
+                            fontsize:20,
+                        }
+                    },
+                    y : {
+                        name: 'Y',
+                        withLabel: true,
+                        label: {
+                            position: 'rt',
+                            offset: [20, 1],
+                            color:'grey',
+                            fontsize:20,
+                        }
+                    },
+                    },
+                });
+
+        brd.infobox.distanceX = 10;
+        brd.infobox.distanceY = 0;
+        
+        // DATAS to be printed
+        var X = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6,0.7,0.8];
+        var ligne1 = document.getElementById("ma_table").rows[0];
+        var ligne2 = document.getElementById("ma_table").rows[1];
+        var coordY = [];
+        var coordX = [];
+        var array_temp = [];
+
+         // REMPLISSAGE du tableau STATIQUE
+        for (let i=0; i<X.length; i++){
+            ligne1.cells[i+1].innerHTML = X[i];
+            // ligne2.cells[i+1].innerHTML = 0.050*X[i];
+            
+            coordY[i] = 100*X[i];
+            array_temp[i] = brd.create('point', [X[i],coordY[i]], {face:'plus', size:8, color:'blue', withLabel:false, visible:true, showInfobox: true});
+        };
+
+        // INFOBOX
+        brd.highlightInfobox = function(x,y,el) {
+                this.infobox.setText( 'X = ' + x + '<br> ' + 'Y = ' + y  );
+        };
+
+        // ASPECT PAPIER MILLIMÉTRÉ
+        //      lignes non draggables => fixed:true
+        for (let j=0; j<20; j++){
+            brd.create('line', [[0,j],[j,j]], {fixed:true, strokeWidth:0.7, strokeColor:'blue', highlightStrokeWidth: 0.7, highlightStrokeOpacity: 10.0, highlightStrokeColor: 'blue'});
+            brd.create('line', [[0.1*j,0],[0.1*j,j]], {fixed:true, strokeWidth:0.7, strokeColor:'blue', highlightStrokeWidth: 0.7, highlightStrokeOpacity: 10.0, highlightStrokeColor: 'blue'});
+        };
+        
+        let lastTime;
+        function playAnimation(time){
+           if (lastTime != null){
+               const delta = time - lastTime;
+           } 
+            for (let i=0; i<X.length; i++){
+                coordX[i] = ligne1.cells[i+1].innerHTML; 
+                coordY[i] = ligne2.cells[i+1].innerHTML; 
+                array_temp[i].setPosition(JXG.COORDS_BY_USER,[parseFloat(coordX[i]),parseFloat(coordY[i])]);
+                brd.update();          
+            };
+            
+            lastTime = time;
+            window.requestAnimationFrame(playAnimation);
+        };
+        
+        window.requestAnimationFrame(playAnimation);   
+                                                
+    </script>
+    
+</body>
+</html>
