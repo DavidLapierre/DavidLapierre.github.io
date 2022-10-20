@@ -1,0 +1,418 @@
+
+ html {
+    background: #282828;
+    text-align: center;
+    font-size: 10px;
+  }
+  
+  body {
+    margin: 0;
+    font-size: 2rem;
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+    align-items: center;
+  }
+  
+  .clock {
+    width: 30rem;
+    height: 30rem;
+    position: relative;
+    padding: 2rem;
+    border: 7px solid #282828;
+    box-shadow: -4px -4px 10px rgba(67,67,67,0.5),
+                  inset 4px 4px 10px rgba(0,0,0,0.5),
+                  inset -4px -4px 10px rgba(67,67,67,0.5),
+                  4px 4px 10px rgba(0,0,0,0.3);
+    border-radius: 50%;
+    margin: 50px auto;
+  }
+
+  .outer-clock-face {
+    position: relative;
+    background: #282828;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+  }
+  
+  .outer-clock-face::after {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    transform: rotate(90deg)
+  }
+  
+  .outer-clock-face::after,
+  .outer-clock-face::before,
+  .outer-clock-face .marking{
+    content: '';
+    position: absolute;
+    top:10px;
+    width: 5px;
+    height: 100%;
+    background: #1df52f;
+    z-index: 0;
+    left: 49%;
+  }
+
+  .outer-clock-face .marking {
+    background: #bdbdcb;
+    width: 3px;
+  }
+
+  .outer-clock-face .marking.marking-un {
+    -webkit-transform: rotate(6deg);
+    -moz-transform: rotate(6deg);
+    transform: rotate(6deg);
+  }
+
+  .outer-clock-face .marking.marking-deux {
+    -webkit-transform: rotate(12deg);
+    -moz-transform: rotate(12deg);
+    transform: rotate(12deg)
+  }
+
+  .outer-clock-face .marking.marking-trois {
+    -webkit-transform: rotate(18deg);
+    -moz-transform: rotate(18deg);
+    transform: rotate(18deg)
+  }
+
+  .outer-clock-face .marking.marking-quatre {
+    -webkit-transform: rotate(24deg);
+    -moz-transform: rotate(24deg);
+    transform: rotate(24deg)
+  }
+
+  
+  .outer-clock-face .marking.marking-five {
+    -webkit-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+    transform: rotate(30deg);
+    background: #f5b11d;
+    width:5px;
+  }
+
+
+  .outer-clock-face .marking.marking-six {
+    -webkit-transform: rotate(36deg);
+    -moz-transform: rotate(36deg);
+    transform: rotate(36deg);
+    /* width:5px; */
+  }
+
+  .outer-clock-face .marking.marking-sept {
+    -webkit-transform: rotate(42deg);
+    -moz-transform: rotate(42deg);
+    transform: rotate(42deg);
+    /* width:5px; */
+  }
+
+  .outer-clock-face .marking.marking-huit {
+    -webkit-transform: rotate(48deg);
+    -moz-transform: rotate(48deg);
+    transform: rotate(48deg);
+    /* width:5px; */
+  }
+
+  .outer-clock-face .marking.marking-neuf {
+    -webkit-transform: rotate(54deg);
+    -moz-transform: rotate(54deg);
+    transform: rotate(54deg);
+    /* width:5px; */
+  }
+  
+  .outer-clock-face .marking.marking-ten {
+    -webkit-transform: rotate(60deg);
+    -moz-transform: rotate(60deg);
+    transform: rotate(60deg);
+    background: #f5b11d;
+    width:5px;
+  }
+
+  .outer-clock-face .marking.marking-11 {
+    -webkit-transform: rotate(66deg);
+    -moz-transform: rotate(66deg);
+    transform: rotate(66deg);
+    /* width:5px; */
+  }
+
+  .outer-clock-face .marking.marking-12 {
+    -webkit-transform: rotate(72deg);
+    -moz-transform: rotate(72deg);
+    transform: rotate(72deg);
+    /* width:5px; */
+  }
+
+  .outer-clock-face .marking.marking-13 {
+    -webkit-transform: rotate(78deg);
+    -moz-transform: rotate(78deg);
+    transform: rotate(78deg);
+    /* width:5px; */
+  }
+
+  .outer-clock-face .marking.marking-14 {
+    -webkit-transform: rotate(84deg);
+    -moz-transform: rotate(84deg);
+    transform: rotate(84deg);
+    /* width:5px; */
+  }
+
+  .outer-clock-face .marking.marking-16 {
+    -webkit-transform: rotate(96deg);
+    -moz-transform: rotate(96deg);
+    transform: rotate(96deg);
+    /* width:5px; */
+  }
+
+  .outer-clock-face .marking.marking-17 {
+    -webkit-transform: rotate(102deg);
+    -moz-transform: rotate(102deg);
+    transform: rotate(102deg);
+    /* width:5px; */
+  }
+
+  .outer-clock-face .marking.marking-18 {
+    -webkit-transform: rotate(108deg);
+    -moz-transform: rotate(108deg);
+    transform: rotate(108deg);
+    /* width:5px; */
+  }
+
+  .outer-clock-face .marking.marking-19 {
+    -webkit-transform: rotate(114deg);
+    -moz-transform: rotate(114deg);
+    transform: rotate(114deg);
+    /* width:5px; */
+  }
+  
+  .outer-clock-face .marking.marking-twenty {
+    -webkit-transform: rotate(120deg);
+    -moz-transform: rotate(120deg);
+    transform: rotate(120deg);
+    background: #f5b11d;
+    width:5px;
+  }
+
+  .outer-clock-face .marking.marking-21 {
+    -webkit-transform: rotate(126deg);
+    -moz-transform: rotate(126deg);
+    transform: rotate(126deg);
+  }
+
+  .outer-clock-face .marking.marking-22 {
+    -webkit-transform: rotate(132deg);
+    -moz-transform: rotate(132deg);
+    transform: rotate(132deg);
+  }
+
+  .outer-clock-face .marking.marking-23 {
+    -webkit-transform: rotate(138deg);
+    -moz-transform: rotate(138deg);
+    transform: rotate(138deg);
+  }
+
+  .outer-clock-face .marking.marking-24 {
+    -webkit-transform: rotate(144deg);
+    -moz-transform: rotate(144deg);
+    transform: rotate(144deg);
+  }
+  
+  .outer-clock-face .marking.marking-twenty-five {
+    -webkit-transform: rotate(150deg);
+    -moz-transform: rotate(150deg);
+    transform: rotate(150deg);
+    background: #f5b11d;
+    width:5px;
+  }
+
+  .outer-clock-face .marking.marking-26 {
+    -webkit-transform: rotate(156deg);
+    -moz-transform: rotate(156deg);
+    transform: rotate(156deg);
+  }
+
+  .outer-clock-face .marking.marking-27 {
+    -webkit-transform: rotate(162deg);
+    -moz-transform: rotate(162deg);
+    transform: rotate(162deg);
+  }
+
+  .outer-clock-face .marking.marking-28 {
+    -webkit-transform: rotate(168deg);
+    -moz-transform: rotate(168deg);
+    transform: rotate(168deg);
+  }
+
+  .outer-clock-face .marking.marking-29 {
+    -webkit-transform: rotate(174deg);
+    -moz-transform: rotate(174deg);
+    transform: rotate(174deg);
+  }
+
+  .inner-clock-face {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background: #282828;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    z-index: 1;
+  }
+  
+  .inner-clock-face::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    border-radius: 18px;
+    margin-left: -9px;
+    margin-top: -6px;
+    background: #4d4b63;
+    z-index: 11;
+  }
+
+  .hand {
+    width: 50%;
+    right: 50%;
+    height: 6px;
+    background: #61afff;
+    position: absolute;
+    top: 50%;
+    border-radius: 6px;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+  }
+  
+  .hand.hour-hand {
+    width: 30%;
+    z-index: 3;
+  }
+  
+  .hand.min-hand {
+    height: 3px;
+    z-index: 10;
+    width: 40%;
+  }
+  
+  .hand.second-hand {
+    background: #ee791a;
+    width: 45%;
+    height: 2px;
+  }
+
+  ul {
+    list-style: none;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    z-index: 11;
+  }
+  
+  li {
+    position: absolute;
+    transform-origin: 50% 100%;
+    height: 160px;
+  }
+  
+  .hours {
+    left: 120px;
+    font-size: 23.3333333333px;
+    letter-spacing: -1.6px;
+    line-height: 45px;
+    color:white;
+  }
+
+  .hours li {
+    width: 80px;
+  }
+
+  .hours span {
+    display: block;
+  }
+
+  .hours li:nth-of-type(1) {
+    transform: rotate(30deg);
+  }
+  .hours li:nth-of-type(1) span {
+    transform: rotate(-30deg);
+  }
+  .hours li:nth-of-type(2) {
+    transform: rotate(60deg);
+  }
+  .hours li:nth-of-type(2) span {
+    transform: rotate(-60deg);
+  }
+  .hours li:nth-of-type(3) {
+    transform: rotate(90deg);
+  }
+  .hours li:nth-of-type(3) span {
+    transform: rotate(-90deg);
+  }
+  .hours li:nth-of-type(4) {
+    transform: rotate(120deg);
+  }
+  .hours li:nth-of-type(4) span {
+    transform: rotate(-120deg);
+  }
+  .hours li:nth-of-type(5) {
+    transform: rotate(150deg);
+  }
+  .hours li:nth-of-type(5) span {
+    transform: rotate(-150deg);
+  }
+  .hours li:nth-of-type(6) {
+    transform: rotate(180deg);
+  }
+  .hours li:nth-of-type(6) span {
+    transform: rotate(-180deg);
+  }
+  .hours li:nth-of-type(7) {
+    transform: rotate(210deg);
+  }
+  .hours li:nth-of-type(7) span {
+    transform: rotate(-210deg);
+  }
+  .hours li:nth-of-type(8) {
+    transform: rotate(240deg);
+  }
+  .hours li:nth-of-type(8) span {
+    transform: rotate(-240deg);
+  }
+  .hours li:nth-of-type(9) {
+    transform: rotate(270deg);
+  }
+  .hours li:nth-of-type(9) span {
+    transform: rotate(-270deg);
+  }
+  .hours li:nth-of-type(10) {
+    transform: rotate(300deg);
+  }
+  .hours li:nth-of-type(10) span {
+    transform: rotate(-300deg);
+  }
+  .hours li:nth-of-type(11) {
+    transform: rotate(330deg);
+  }
+  .hours li:nth-of-type(11) span {
+    transform: rotate(-330deg);
+  }
+  .hours li:nth-of-type(12) {
+    transform: rotate(360deg);
+  }
+  .hours li:nth-of-type(12) span {
+    transform: rotate(-360deg);
+  
+  
+  
+  
+  
