@@ -17,7 +17,7 @@ body  {
 
 #grille {
     display: inline-grid;
-    grid-template-columns:30% repeat(3, 1fr);
+    grid-template-columns:25% repeat(3, 1fr);
     /* repeat(4, 1fr); */
     column-gap: 60px;
    justify-content: space-evenly;
