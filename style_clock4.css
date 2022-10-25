@@ -18,17 +18,30 @@ body  {
 
 #grille {
     display: inline-grid;
-    grid-template-columns:29rem repeat(3, 1fr);
+    grid-template-columns:25rem 40px 1fr 40px 1fr 40px 1fr;
     /* repeat(4, 1fr); */
-    column-gap: 20px;
+    column-gap: 10px;
    justify-content: space-evenly;
    /* space-between;  */
 }
 
+
+div p {
+    font-size: 4rem;
+    color:red;
+    text-align: center;
+  position: relative;
+  top: 37%;
+  
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 .clock {
     /* zoom:50%; */
-    width: 20rem;
-    height: 20rem;
+    width: 18rem;
+    height: 18rem;
     border: 7px solid #282828;
     border-radius: 50%;
     box-shadow: -4px -4px 10px rgba(67,67,67,0.5),
@@ -91,7 +104,7 @@ transform: rotate(90deg);
     color:#bdbdcb;
     position:relative;
     bottom:25px;
-    right:15px;
+    right:20px;
     }
 
 .outer-clock-face .marking.marking-zero::before {
@@ -100,7 +113,7 @@ transform: rotate(90deg);
     position:relative;
     top:100%;
     bottom:25px;
-    right:5px;
+    right:3px;
     }
 
 .outer-clock-face .marking.marking-one {
@@ -112,7 +125,7 @@ transform: rotate(30deg)
     color:#bdbdcb;
     position:relative;
     bottom:25px;
-    right:15px;
+    right:12px;
     }
 
 .outer-clock-face .marking.marking-one::before {
@@ -133,7 +146,7 @@ transform: rotate(60deg)
     color:#bdbdcb;
     position:relative;
     bottom:25px;
-    right:15px;
+    right:12px;
     }
 
 .outer-clock-face .marking.marking-two::before {
@@ -142,7 +155,7 @@ transform: rotate(60deg)
     position:relative;
     top:100%;
     bottom:25px;
-    right:5px;
+    right:3px;
     transform: rotate(90deg);
     }
 
@@ -155,7 +168,7 @@ transform: rotate(60deg)
     color:#bdbdcb;
     position:relative;
     bottom:25px;
-    right:15px;
+    right:13px;
     }
 
 .outer-clock-face .marking.marking-3::before {
@@ -164,7 +177,7 @@ transform: rotate(60deg)
     position:relative;
     top:100%;
     bottom:25px;
-    right:5px;
+    right:3px;
     }
 
 .outer-clock-face .marking.marking-three {
@@ -176,7 +189,7 @@ transform: rotate(300deg)
     color:#bdbdcb;
     position:relative;
     bottom:25px;
-    right:25px;
+    right:20px;
     }
 
 .outer-clock-face .marking.marking-three::before {
@@ -199,7 +212,7 @@ transform: rotate(330deg)
     color:#bdbdcb;
     position:relative;
     bottom:25px;
-    right:25px;
+    right:20px;
     }
 
 .outer-clock-face .marking.marking-four::before {
@@ -208,8 +221,7 @@ transform: rotate(330deg)
     position:relative;
     top:100%;
     bottom:25px;
-    right:5px;
-    transform: rotate(90deg);
+    right:3px;
     }
     
 /* CACHE INTÉRIEUR DE L'HORLOGE */
