@@ -1,0 +1,1804 @@
+html {
+    background-color: #282828;
+    text-align: center;
+    font-size: 10px;
+    font-size: 100%;
+    /* zoom:50%; */
+}
+
+body  {
+    margin: 0;
+    font-size: 1rem;
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+    align-items: center;
+    /* zoom:50%; */
+}
+
+#grille {
+    display: inline-grid;
+    grid-template-columns:25rem 40px 1fr 40px 1fr 40px 1fr;
+    grid-template-rows:1fr 1fr;
+    /* repeat(4, 1fr); */
+    align-items: end;
+    column-gap: 10px;
+}
+
+
+div p {
+    font-size: 4rem;
+    color:red;
+    text-align: center;
+  position: relative;
+  top: 37%;
+  
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+div.element  {
+    font-size: 40rem;
+    /* color:red; */
+    /* text-align: center; */
+  /* position: relative; */
+  /* top: 37%; */
+  
+  /* -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%); */
+}
+
+.clock {
+    /* zoom:50%; */
+    width: 18rem;
+    height: 18rem;
+    border: 7px solid #282828;
+    border-radius: 50%;
+    box-shadow: -4px -4px 10px rgba(67,67,67,0.5),
+                inset 4px 4px 10px rgba(0,0,0,0.5),
+                inset -4px -4px 10px rgba(67,67,67,0.5),
+                4px 4px 10px rgba(0,0,0,0.3);
+    margin: 50px auto;
+    position: relative;
+    padding: 2rem;
+}
+
+/* EXTÉRIEUR DE L'HORLOGE */
+.outer-clock-face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background: #282828;
+    /* background-color: red; */
+    overflow:visible;
+  }
+
+/* .outer-clock-face::after {
+-webkit-transform: rotate(90deg);
+-moz-transform: rotate(90deg);
+transform: rotate(90deg);
+
+} */
+
+.outer-clock-face::after,.outer-clock-face::before,
+.outer-clock-face .marking, .outer-clock-face .marking_sec{
+  content: '';
+  position: absolute;
+  width: 0px;
+  height: 100%;
+  background: #1df52f;
+  z-index: 0;
+  left: 49%;
+}
+
+.outer-clock-face::after,.outer-clock-face::before,
+.outer-clock-face .marking, .outer-clock-face .marking_min{
+  content: '';
+  position: absolute;
+  width: 0px;
+  height: 100%;
+  background: #1df52f;
+  z-index: 0;
+  left: 49%;
+}
+
+.outer-clock-face .marking {
+    background: #bdbdcb;
+    width: 3px;
+  }
+
+/* CADRAN DES HEURES */
+  .outer-clock-face .marking.marking-zero::after {
+    content:'12';
+    color:#bdbdcb;
+    position:relative;
+    bottom:25px;
+    right:20px;
+    }
+
+.outer-clock-face .marking.marking-zero::before {
+    content:'6';
+    color:#bdbdcb;
+    position:relative;
+    top:100%;
+    bottom:25px;
+    right:3px;
+    }
+
+.outer-clock-face .marking.marking-one {
+transform: rotate(30deg)
+}
+
+.outer-clock-face .marking.marking-one::after {
+    content:'1';
+    color:#bdbdcb;
+    position:relative;
+    bottom:25px;
+    right:12px;
+    }
+
+.outer-clock-face .marking.marking-one::before {
+    content:'7';
+    color:#bdbdcb;
+    position:relative;
+    top:100%;
+    bottom:25px;
+    right:5px;
+    }
+
+.outer-clock-face .marking.marking-two {
+transform: rotate(60deg)
+}
+
+.outer-clock-face .marking.marking-two::after {
+    content:'2';
+    color:#bdbdcb;
+    position:relative;
+    bottom:25px;
+    right:12px;
+    }
+
+.outer-clock-face .marking.marking-two::before {
+    content:'8';
+    color:#bdbdcb;
+    position:relative;
+    top:100%;
+    bottom:25px;
+    right:3px;
+    transform: rotate(90deg);
+    }
+
+.outer-clock-face .marking.marking-3 {
+    transform: rotate(90deg)
+    }
+    
+.outer-clock-face .marking.marking-3::after {
+    content:'3';
+    color:#bdbdcb;
+    position:relative;
+    bottom:25px;
+    right:13px;
+    }
+
+.outer-clock-face .marking.marking-3::before {
+    content:'9';
+    color:#bdbdcb;
+    position:relative;
+    top:100%;
+    bottom:25px;
+    right:3px;
+    }
+
+.outer-clock-face .marking.marking-three {
+transform: rotate(300deg)
+}
+
+.outer-clock-face .marking.marking-three::after {
+    content:'10';
+    color:#bdbdcb;
+    position:relative;
+    bottom:25px;
+    right:20px;
+    }
+
+.outer-clock-face .marking.marking-three::before {
+    content:'4';
+    color:#bdbdcb;
+    position:relative;
+    top:100%;
+    bottom:25px;
+    right:5px;
+    transform: rotate(90deg);
+    }
+        
+
+.outer-clock-face .marking.marking-four {
+transform: rotate(330deg)
+}
+
+.outer-clock-face .marking.marking-four::after {
+    content:'11';
+    color:#bdbdcb;
+    position:relative;
+    bottom:25px;
+    right:20px;
+    }
+
+.outer-clock-face .marking.marking-four::before {
+    content:'5';
+    color:#bdbdcb;
+    position:relative;
+    top:100%;
+    bottom:25px;
+    right:3px;
+    }
+    
+/* CACHE INTÉRIEUR DE L'HORLOGE */
+.inner-clock-face {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    background: #282828;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    z-index: 1;
+}
+
+/* LES AIGUILLES */
+.inner-clock-face::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    border-radius: 18px;
+    margin-left: -9px;
+    margin-top: -6px;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    background: #4d4b63;
+    z-index: 11;
+  }
+
+.hand {
+    width: 50%;
+    right: 50%;
+    height: 6px;
+    background: #61afff;
+    position: absolute;
+    top: 50%;
+    border-radius: 6px;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+}
+
+.hand.hour-hand, .hand.aiguille-heures {
+    background: #bdbdcb;
+    width: 30%;
+    height: 20px;
+    z-index: 3;
+    font-size: 1rem;
+}
+
+.hand.min-hand, .hand.aiguille-minutes {
+    /* padding: 10% 0; */
+    height: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    z-index: 10;
+    width: 40%;
+    /* position:relative; */
+}
+#minutes {
+    position:absolute;
+    top:-55%;
+    left:20%;
+}
+
+.hand.second-hand, .hand.aiguille-secondes {
+    color:#ee791a;
+    /* font-size: 15px; */
+    font-size: 1rem;
+    background: #ee791a;
+    width: 45%;
+    height: 2px;
+}
+
+/* CADRAN DES SECONDES */
+.outer-clock-face .marking_sec {
+    background: #ee791a;
+    width: 3px;
+  }
+
+
+.outer-clock-face .marking_sec.marking-00::after {
+    content:'60';
+    color:#ee791a;
+    position:relative;
+    bottom:25px;
+    right:30px;
+    }
+
+.outer-clock-face .marking_sec.marking-00::before {
+    content:'30';
+    color:#ee791a;
+    position:relative;
+    top:100%;
+    bottom:25px;
+    right:10px;
+    }
+
+.outer-clock-face .marking_sec.marking-01 {
+transform: rotate(6deg)
+}
+
+.outer-clock-face .marking_sec.marking-01::after {
+    content:'1';
+    color:#ee791a;
+    position:relative;
+    font-size: 0.7rem;
+    bottom:25px;
+    right:0px;
+    }
+
+.outer-clock-face .marking_sec.marking-01::before {
+    content:'31';
+    content:'';
+    color:#ee791a;
+    position:relative;
+    font-size: 0.7rem;
+    top:100%;
+    bottom:25px;
+    right:5px;
+    }
+
+.outer-clock-face .marking_sec.marking-02 {
+    transform: rotate(12deg)
+    }
+    
+.outer-clock-face .marking_sec.marking-02::after {
+    content:'2';
+    content:'';
+    color:#ee791a;
+    position:relative;
+    font-size: 0.7rem;
+    bottom:25px;
+    right:15px;
+    }
+
+.outer-clock-face .marking_sec.marking-02::before {
+    content:'32';
+    content:'';
+    color:#ee791a;
+    position:relative;
+    font-size: 0.7rem;
+    top:100%;
+    bottom:25px;
+    right:5px;
+    }
+
+.outer-clock-face .marking_sec.marking-03 {
+    transform: rotate(18deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-03::after {
+        content:'3';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:15px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-03::before {
+        content:'33';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-04 {
+    transform: rotate(24deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-04::after {
+        content:'4';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:15px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-04::before {
+        content:'34';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-05 {
+    transform: rotate(30deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-05::after {
+        content:'5';
+        color:#ee791a;
+        position:relative;
+        font-size: 1rem;
+        bottom:25px;
+        right:25px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-05::before {
+        content:'35';
+        color:#ee791a;
+        position:relative;
+        font-size: 1rem;
+        top:100%;
+        bottom:25px;
+        right:10px;
+        }
+
+.outer-clock-face .marking_sec.marking-06 {
+    transform: rotate(36deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-06::after {
+        content:'6';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:15px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-06::before {
+        content:'36';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-07 {
+    transform: rotate(42deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-07::after {
+        content:'7';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:15px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-07::before {
+        content:'37';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-08 {
+    transform: rotate(48deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-08::after {
+        content:'8';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:15px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-08::before {
+        content:'38';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-09 {
+    transform: rotate(54deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-09::after {
+        content:'9';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:15px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-09::before {
+        content:'39';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-10 {
+    transform: rotate(60deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-10::after {
+        content:'10';
+        color:#ee791a;
+        position:relative;
+        font-size: 1rem;
+        bottom:25px;
+        right:25px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-10::before {
+        content:'40';
+        color:#ee791a;
+        position:relative;
+        font-size: 1rem;
+        top:100%;
+        bottom:25px;
+        right:10px;
+        }
+
+.outer-clock-face .marking_sec.marking-11 {
+    transform: rotate(66deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-11::after {
+        content:'11';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-11::before {
+        content:'41';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-12 {
+    transform: rotate(72deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-12::after {
+        content:'12';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-12::before {
+        content:'42';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-13 {
+    transform: rotate(78deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-13::after {
+        content:'13';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-13::before {
+        content:'43';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-14 {
+    transform: rotate(84deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-14::after {
+        content:'14';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-14::before {
+        content:'44';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-15 {
+    transform: rotate(90deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-15::after {
+        content:'15';
+        color:#ee791a;
+        position:relative;
+        font-size: 1rem;
+        bottom:25px;
+        right:30px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-15::before {
+        content:'45';
+        color:#ee791a;
+        position:relative;
+        font-size: 1rem;
+        top:100%;
+        bottom:25px;
+        right:10px;
+        }
+
+.outer-clock-face .marking_sec.marking-16 {
+    transform: rotate(96deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-16::after {
+        content:'16';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-16::before {
+        content:'46';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-17 {
+    transform: rotate(102deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-17::after {
+        content:'17';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-17::before {
+        content:'47';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-18 {
+    transform: rotate(108deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-18::after {
+        content:'18';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-18::before {
+        content:'48';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-19 {
+    transform: rotate(114deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-19::after {
+        content:'19';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:25px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-19::before {
+        content:'49';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+        
+.outer-clock-face .marking_sec.marking-20 {
+    transform: rotate(120deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-20::after {
+        content:'20';
+        color:#ee791a;
+        position:relative;
+        font-size: 1rem;
+        bottom:25px;
+        right:35px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-20::before {
+        content:'50';
+        color:#ee791a;
+        position:relative;
+        font-size: 1rem;
+        top:100%;
+        bottom:25px;
+        right:10px;
+        }
+
+.outer-clock-face .marking_sec.marking-21 {
+    transform: rotate(126deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-21::after {
+        content:'21';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-21::before {
+        content:'51';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-22 {
+    transform: rotate(132deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-22::after {
+        content:'22';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-22::before {
+        content:'52';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-23 {
+    transform: rotate(138deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-23::after {
+        content:'23';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-23::before {
+        content:'53';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-24 {
+    transform: rotate(144deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-24::after {
+        content:'24';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-24::before {
+        content:'54';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-25 {
+    transform: rotate(150deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-25::after {
+        content:'25';
+        color:#ee791a;
+        position:relative;
+        font-size: 1rem;
+        bottom:25px;
+        right:35px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-25::before {
+        content:'55';
+        color:#ee791a;
+        position:relative;
+        font-size: 1rem;
+        top:100%;
+        bottom:25px;
+        right:10px;
+        }
+
+.outer-clock-face .marking_sec.marking-26 {
+    transform: rotate(156deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-26::after {
+        content:'26';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-26::before {
+        content:'56';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-27 {
+    transform: rotate(162deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-27::after {
+        content:'27';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-27::before {
+        content:'57';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-28 {
+    transform: rotate(168deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-28::after {
+        content:'28';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-28::before {
+        content:'58';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_sec.marking-29 {
+    transform: rotate(174deg)
+    }
+    
+    .outer-clock-face .marking_sec.marking-29::after {
+        content:'29';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_sec.marking-29::before {
+        content:'59';
+        content:'';
+        color:#ee791a;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+
+/* CADRAN DES MINUTES */
+.outer-clock-face .marking_min {
+    background: #ee791a;
+    width: 3px;
+  }
+
+
+.outer-clock-face .marking_min.marking-00::after {
+    content:'60';
+    color:#61afff;
+    position:relative;
+    bottom:25px;
+    right:30px;
+    }
+
+.outer-clock-face .marking_min.marking-00::before {
+    content:'30';
+    color:#61afff;
+    position:relative;
+    top:100%;
+    bottom:25px;
+    right:10px;
+    }
+
+.outer-clock-face .marking_min.marking-01 {
+transform: rotate(6deg)
+}
+
+.outer-clock-face .marking_min.marking-01::after {
+    content:'1';
+    color:#61afff;
+    position:relative;
+    font-size: 0.7rem;
+    bottom:25px;
+    right:0px;
+    }
+
+.outer-clock-face .marking_min.marking-01::before {
+    content:'31';
+    content:'';
+    color:#61afff;
+    position:relative;
+    font-size: 0.7rem;
+    top:100%;
+    bottom:25px;
+    right:5px;
+    }
+
+.outer-clock-face .marking_min.marking-02 {
+    transform: rotate(12deg)
+    }
+    
+.outer-clock-face .marking_min.marking-02::after {
+    content:'2';
+    content:'';
+    color:#61afff;
+    position:relative;
+    font-size: 0.7rem;
+    bottom:25px;
+    right:15px;
+    }
+
+.outer-clock-face .marking_min.marking-02::before {
+    content:'32';
+    content:'';
+    color:#61afff;
+    position:relative;
+    font-size: 0.7rem;
+    top:100%;
+    bottom:25px;
+    right:5px;
+    }
+
+.outer-clock-face .marking_min.marking-03 {
+    transform: rotate(18deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-03::after {
+        content:'3';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:15px;
+        }
+    
+    .outer-clock-face .marking_min.marking-03::before {
+        content:'33';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-04 {
+    transform: rotate(24deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-04::after {
+        content:'4';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:15px;
+        }
+    
+    .outer-clock-face .marking_min.marking-04::before {
+        content:'34';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-05 {
+    transform: rotate(30deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-05::after {
+        content:'5';
+        color:#61afff;
+        position:relative;
+        font-size: 1rem;
+        bottom:25px;
+        right:25px;
+        }
+    
+    .outer-clock-face .marking_min.marking-05::before {
+        content:'35';
+        color:#61afff;
+        position:relative;
+        font-size: 1rem;
+        top:100%;
+        bottom:25px;
+        right:10px;
+        }
+
+.outer-clock-face .marking_min.marking-06 {
+    transform: rotate(36deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-06::after {
+        content:'6';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:15px;
+        }
+    
+    .outer-clock-face .marking_min.marking-06::before {
+        content:'36';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-07 {
+    transform: rotate(42deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-07::after {
+        content:'7';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:15px;
+        }
+    
+    .outer-clock-face .marking_min.marking-07::before {
+        content:'37';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-08 {
+    transform: rotate(48deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-08::after {
+        content:'8';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:15px;
+        }
+    
+    .outer-clock-face .marking_min.marking-08::before {
+        content:'38';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-09 {
+    transform: rotate(54deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-09::after {
+        content:'9';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:15px;
+        }
+    
+    .outer-clock-face .marking_min.marking-09::before {
+        content:'39';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-10 {
+    transform: rotate(60deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-10::after {
+        content:'10';
+        color:#61afff;
+        position:relative;
+        font-size: 1rem;
+        bottom:25px;
+        right:25px;
+        }
+    
+    .outer-clock-face .marking_min.marking-10::before {
+        content:'40';
+        color:#61afff;
+        position:relative;
+        font-size: 1rem;
+        top:100%;
+        bottom:25px;
+        right:10px;
+        }
+
+.outer-clock-face .marking_min.marking-11 {
+    transform: rotate(66deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-11::after {
+        content:'11';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_min.marking-11::before {
+        content:'41';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-12 {
+    transform: rotate(72deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-12::after {
+        content:'12';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_min.marking-12::before {
+        content:'42';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-13 {
+    transform: rotate(78deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-13::after {
+        content:'13';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_min.marking-13::before {
+        content:'43';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-14 {
+    transform: rotate(84deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-14::after {
+        content:'14';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_min.marking-14::before {
+        content:'44';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-15 {
+    transform: rotate(90deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-15::after {
+        content:'15';
+        color:#61afff;
+        position:relative;
+        font-size: 1rem;
+        bottom:25px;
+        right:30px;
+        }
+    
+    .outer-clock-face .marking_min.marking-15::before {
+        content:'45';
+        color:#61afff;
+        position:relative;
+        font-size: 1rem;
+        top:100%;
+        bottom:25px;
+        right:10px;
+        }
+
+.outer-clock-face .marking_min.marking-16 {
+    transform: rotate(96deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-16::after {
+        content:'16';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_min.marking-16::before {
+        content:'46';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-17 {
+    transform: rotate(102deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-17::after {
+        content:'17';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_min.marking-17::before {
+        content:'47';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-18 {
+    transform: rotate(108deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-18::after {
+        content:'18';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_min.marking-18::before {
+        content:'48';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-19 {
+    transform: rotate(114deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-19::after {
+        content:'19';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:25px;
+        }
+    
+    .outer-clock-face .marking_min.marking-19::before {
+        content:'49';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+        
+.outer-clock-face .marking_min.marking-20 {
+    transform: rotate(120deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-20::after {
+        content:'20';
+        color:#61afff;
+        position:relative;
+        font-size: 1rem;
+        bottom:25px;
+        right:35px;
+        }
+    
+    .outer-clock-face .marking_min.marking-20::before {
+        content:'50';
+        color:#61afff;
+        position:relative;
+        font-size: 1rem;
+        top:100%;
+        bottom:25px;
+        right:10px;
+        }
+
+.outer-clock-face .marking_min.marking-21 {
+    transform: rotate(126deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-21::after {
+        content:'21';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_min.marking-21::before {
+        content:'51';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-22 {
+    transform: rotate(132deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-22::after {
+        content:'22';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_min.marking-22::before {
+        content:'52';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-23 {
+    transform: rotate(138deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-23::after {
+        content:'23';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_min.marking-23::before {
+        content:'53';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-24 {
+    transform: rotate(144deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-24::after {
+        content:'24';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_min.marking-24::before {
+        content:'54';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-25 {
+    transform: rotate(150deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-25::after {
+        content:'25';
+        color:#61afff;
+        position:relative;
+        font-size: 1rem;
+        bottom:25px;
+        right:35px;
+        }
+    
+    .outer-clock-face .marking_min.marking-25::before {
+        content:'55';
+        color:#61afff;
+        position:relative;
+        font-size: 1rem;
+        top:100%;
+        bottom:25px;
+        right:10px;
+        }
+
+.outer-clock-face .marking_min.marking-26 {
+    transform: rotate(156deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-26::after {
+        content:'26';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_min.marking-26::before {
+        content:'56';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-27 {
+    transform: rotate(162deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-27::after {
+        content:'27';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_min.marking-27::before {
+        content:'57';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-28 {
+    transform: rotate(168deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-28::after {
+        content:'28';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_min.marking-28::before {
+        content:'58';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.outer-clock-face .marking_min.marking-29 {
+    transform: rotate(174deg)
+    }
+    
+    .outer-clock-face .marking_min.marking-29::after {
+        content:'29';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        bottom:25px;
+        right:20px;
+        }
+    
+    .outer-clock-face .marking_min.marking-29::before {
+        content:'59';
+        content:'';
+        color:#61afff;
+        position:relative;
+        font-size: 0.7rem;
+        top:100%;
+        bottom:25px;
+        right:5px;
+        }
+
+.time {
+    background: rgb(12, 12, 12);
+    /* color: #fff; */
+    border: 7px solid rgb(255, 252, 252);
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    padding: 8px;
+    text-align: center;
+    width: 500px;
+}
+
+.hms {
+    font-size: 55pt;
+    font-weight: 200;
+}
+
