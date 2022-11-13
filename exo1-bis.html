@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphiques interactifs</title>
+     <link rel="stylesheet" type="text/css" href="https://jsxgraph.org/distrib/jsxgraph.css" />
+     <script type="text/javascript" src="https://jsxgraph.org/distrib/jsxgraphcore.js"></script>
+     <link rel="stylesheet" href="./style2.css">
+
+</head>
+
+<body>
+    
+     <div id="boite1" class="jxgbox" style="width:500px; height:500px; margin : 20px auto;"></div>
+
+
+    <script type="text/javascript">
+        // GRILLE
+        JXG.Options.grid.gridX = 0.1;
+        JXG.Options.grid.gridY = 0.1;
+        JXG.Options.grid.strokeWidth = 0.5;
+        JXG.Options.grid.strokeColor = 'blue';
+
+        // TICKS
+        JXG.Options.axis.ticks.strokeColor = 'blue';
+        JXG.Options.axis.ticks.majorHeight = 1;
+        JXG.Options.axis.ticks.minorHeight = 10;
+        JXG.Options.axis.ticks.insertTicks = true;
+        JXG.Options.axis.ticks.ticksDistance = 10;
+
+        brd = JXG.JSXGraph.initBoard('boite1',{
+                boundingbox:[-0.5,5.1,5.1,-0.2], 
+                keepaspectratio:true, // même échelle horizontale et verticale
+                axis:true,            // les axes fléchés sont présents
+                showCopyright:false,  // On retire le Copyright affreux
+                wheel:true,           // zoom avec la souris possible
+                grid:true,            // la grille est affichée en grisé
+                defaultAxes: {
+                        x : {
+                        name: 'X',
+                        withLabel: true,
+                        label: {
+                            position: 'rt',
+                            offset: [-10, 15],
+                            color:'grey',
+                            fontsize:20,
+                        }
+                    },
+                    y : {
+                        name: 'Y',
+                        withLabel: true,
+                        label: {
+                            position: 'rt',
+                            offset: [20, 1],
+                            color:'grey',
+                            fontsize:20,
+                        }
+                    },
+                    },
+                });
+                     
+        
+        // DATAS to be printed
+       
+        var coordY = [];
+        var coordX = [];
+        var array_temp = [];
+
+
+        
+
+        // ANIMATION et MISE À JOUR
+        let lastTime;
+        function playAnimation(time){
+           if (lastTime != null){
+               const delta = time - lastTime;
+           } 
+            for (let i=0; i<X.length; i++){
+                // ligne3.cells[i+1].innerHTML = X[i]; 
+                // ligne4.cells[i+1].innerHTML = a.Value()*X[i]; 
+
+                coordX[i] = X[i];
+                coordY[i] = a.Value()*X[i];
+
+                array_temp[i].setPosition(JXG.COORDS_BY_USER,[parseFloat(coordX[i]),parseFloat(coordY[i])]);
+                brd.update();  
+            };
+            
+            lastTime = time;
+            window.requestAnimationFrame(playAnimation);
+        };
+        
+        window.requestAnimationFrame(playAnimation);
+
+        // ASPECT PAPIER MILLIMÉTRÉ
+        //      lignes non draggables => fixed:true
+        for (let j=0; j<20; j++){
+            brd.create('line', [[0,j],[j,j]], {fixed:true, strokeWidth:0.7, strokeColor:'blue', highlightStrokeWidth: 0.7, highlightStrokeOpacity: 10.0, highlightStrokeColor: 'blue'});
+            brd.create('line', [[j,0],[j,j]], {fixed:true, strokeWidth:0.7, strokeColor:'blue', highlightStrokeWidth: 0.7, highlightStrokeOpacity: 10.0, highlightStrokeColor: 'blue'});
+        };
+        
+        brd.create('functiongraph', [(x) => 1.5*x,0,20],{strokeColor:'red',strokeWidth:3});
+                                                
+    </script>
+    
+</body>
+</html>
