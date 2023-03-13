@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphiques interactifs</title>
+     <link rel="stylesheet" type="text/css" href="https://jsxgraph.org/distrib/jsxgraph.css" />
+     <script type="text/javascript" src="https://jsxgraph.org/distrib/jsxgraphcore.js"></script>
+    
+     <link rel="stylesheet" href="./style2.css">
+
+</head>
+
+<body>
+    <nav>
+        <div class="left-links">
+            <a class="links" href="aide_eleve_autre_echelle_4eme1.html">&larr;</a>
+        </div>
+        <div class="right-links">
+            <a class="links" href="#">&rarr;</a>
+        </div>
+    </nav>
+
+    <table id="ma_table" style="margin: auto;margin-bottom: 20px;">
+        <caption>Tableau de valeurs pour les + bleus</caption>
+       
+        <tr>
+           <th scope="row">I (en A)</th>
+            <td contenteditable='true'>0</td>
+            <td contenteditable='true'>0.0193</td>
+            <td contenteditable='true'>0.0392</td>
+            <td contenteditable='true'>0.0587</td>
+            <td contenteditable='true'>0.0785</td>
+            <td contenteditable='true'>0.0983</td>
+            <td contenteditable='true'>0.118</td>
+        </tr>
+        <tr>
+            <th scope="row">U (en V)</th>
+            <td contenteditable='true'>0</td>
+            <td contenteditable='true'>2</td>
+            <td contenteditable='true'>4</td>
+            <td contenteditable='true'>6</td>
+            <td contenteditable='true'>8</td>
+            <td contenteditable='true'>10</td>
+            <td contenteditable='true'>12</td>
+        </tr>
+    </table>
+    
+     <div id="boite1" class="jxgbox" style="width:1000px; height:500px; margin : 20px auto 10px auto;"></div>
+     
+     <table id="ma_table2" style="margin: auto;margin-bottom: 20px;">
+        <caption>Tableau de valeurs pour la droite ROUGE</caption>
+        <tr>
+           <th scope="row">I (en A)</th>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <th scope="row">U (en V)</th>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+        </tr>
+    </table>
+
+    <div style="color:red; font-size: 36px; margin-top:-30px"><p id="output2" style="text-align:center;" ></p></div>
+
+    <script type="text/javascript">
+        // GRILLE
+        JXG.Options.grid.gridX = 0.0005;
+        JXG.Options.grid.gridY = 0.1;
+        JXG.Options.grid.strokeWidth = 0.5;
+        JXG.Options.grid.strokeColor = 'blue';
+
+        // TICKS
+        JXG.Options.axis.ticks.strokeColor = 'blue';
+        JXG.Options.axis.ticks.strokeWidth = 2;
+        JXG.Options.axis.ticks.majorHeight = 10;
+        JXG.Options.axis.ticks.minorHeight = 10;
+        JXG.Options.axis.ticks.minorDistance = 1;
+        JXG.Options.axis.ticks.insertTicks = true;
+        JXG.Options.axis.ticks.ticksDistance = 1;
+
+        // InfoBox :
+        JXG.Options.infobox.anchorY = 'top';
+        JXG.Options.infobox.anchorX = 'left';
+        JXG.Options.infobox.color = 'black';
+
+        brd = JXG.JSXGraph.initBoard('boite1',{
+                boundingbox:[-0.005,12.2,0.122,-0.7], 
+                keepaspectratio:false, // même échelle horizontale et verticale
+                axis:true,            // les axes fléchés sont présents
+                showCopyright:false,  // On retire le Copyright affreux
+                wheel:true,           // zoom avec la souris possible
+                grid:true,            // la grille est affichée en grisé
+                defaultAxes: {
+                        x : {
+                        name: 'I (en A) ',
+                        withLabel: true,
+                        label: {
+                            position: 'rt',
+                            offset: [-60, 15],
+                            color:'grey',
+                            fontsize:20,
+                        }
+                    },
+                    y : {
+                        name: 'U (en V)',
+                        withLabel: true,
+                        label: {
+                            position: 'rt',
+                            offset: [20, 1],
+                            color:'grey',
+                            fontsize:20,
+                        }
+                    },
+                    },
+                }); 
+
+        brd.infobox.distanceX = 10;
+        brd.infobox.distanceY = 0;
+
+        // SLIDERS
+        var a = brd.create('slider', [[0.05, 1.0], [0.085, 1.0],[0, 60, 110]],{name:'a', snapWidth: 0.1, color: 'red'});
+        
+        // DATAS to be printed
+        var X = [0, 0.0193, 0.0392, 0.0587, 0.0785, 0.0983, 0.118];
+        var Y = [0,2,4,6,8,10,12]
+        var ligne1 = document.getElementById("ma_table").rows[0];
+        var ligne2 = document.getElementById("ma_table").rows[1];
+        var ligne3 = document.getElementById("ma_table2").rows[0];
+        var ligne4 = document.getElementById("ma_table2").rows[1];
+        var coordY = [];
+        var coordX = [0.0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.10];
+        var array_stat = [], array_temp = [];
+
+        
+        // AFFICHAGE DE DÉPART des + de la droite ROUGE
+        for (let i=0; i<X.length; i++){       
+            ligne1.cells[i+1].innerHTML = X[i];
+            ligne2.cells[i+1].innerHTML = Y[i];
+            
+            array_stat[i] = brd.create('point', [X[i],Y[i]], {fixed:true, face:'plus', size:8, color:'blue', withLabel:false});  
+        };
+
+        // INFOBOX
+        brd.highlightInfobox = function(x,y,el) {
+                this.infobox.setText( 'I = ' + x + ' A' + '<br> ' + 'U = ' + y + ' V' );
+        };
+
+        for (let j=0; j<coordX.length; j++){       
+            ligne3.cells[j+1].innerHTML = X[j];
+            ligne4.cells[j+1].innerHTML = Y[j];
+           
+            coordY[j] = a.Value()*coordX[j];
+            array_temp[j] = brd.create('point', [coordX[j],coordY[j]], {face:'plus', size:8, color:'black', withLabel:false, visible:true});
+        };
+
+
+
+        // ANIMATION et MISE À JOUR
+        let lastTime;
+        function playAnimation(time){
+           if (lastTime != null){
+               const delta = time - lastTime;
+           } 
+        //    coordX[i] = [0.0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.10]
+            for (let i=0; i<coordX.length; i++){
+                // coordX[i] = X[i];
+                // coordY[i] = (a.Value()*X[i]).toFixed(1);
+                coordY[i] = (a.Value()*coordX[i]).toFixed(2);
+
+                ligne3.cells[i+1].innerHTML = coordX[i]; 
+                ligne4.cells[i+1].innerHTML = coordY[i]; 
+
+                affiche = (a.Value().toFixed(1)).toString().replace(".", ",");
+                document.getElementById("output2").innerHTML = "I  \u00d7" + affiche +" = U ";
+
+                coordY[i] = a.Value()*coordX[i]
+                array_temp[i].setPosition(JXG.COORDS_BY_USER,[parseFloat(coordX[i]),parseFloat(coordY[i])]);
+                brd.update();  
+            };
+            
+            lastTime = time;
+            window.requestAnimationFrame(playAnimation);
+        };
+        
+        window.requestAnimationFrame(playAnimation);
+        
+    
+    
+        // ASPECT PAPIER MILLIMÉTRÉ
+        //      lignes non draggables => fixed:true
+        for (let j=0; j<30; j++){
+            brd.create('line', [[0,j],[j,j]], {fixed:true, strokeWidth:0.7, strokeColor:'blue', highlightStrokeWidth: 0.7, highlightStrokeOpacity: 10.0, highlightStrokeColor: 'blue'});
+            brd.create('line', [[0.005*j,0],[0.005*j,j]], {fixed:true, strokeWidth:0.7, strokeColor:'blue', highlightStrokeWidth: 0.7, highlightStrokeOpacity: 10.0, highlightStrokeColor: 'blue'});
+        };
+        
+        // FONCTION EN LIEN AVEC LE SLIDER :
+        brd.create('functiongraph', [(x) => a.Value()*x,0,20],{strokeColor:'red',strokeWidth:3});
+        
+        // ÉQUATION AFFICHÉE
+        //       \u00d7 est le signe de la multiplication : x 
+          var txt = brd.create('text', [ 0.095,  ()=> a.Value()*0.095 - 0.5, function () {
+            affiche = (a.Value().toFixed(1)).toString().replace(".", ",");
+           return "U = " + affiche +" \u00d7 I ";
+          }], {fontSize: 36, color:'red'});
+        
+                                                
+    </script>
+    
+</body>
+</html>
